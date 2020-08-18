@@ -1,0 +1,23 @@
+class Solution {
+    public int[] sortedSquares(int[] A) {
+        int[] squareNumbers = new int[A.length];
+        for (int i = 0; i < A.length; i++) {
+            int square = A[i] * A[i];
+            squareNumbers[i] = square; 
+        }
+        boolean needIteration = true;
+        int j;
+        while (needIteration) {
+	        needIteration = false;
+            for (int i = 1; i < squareNumbers.length; i++) {
+                if (squareNumbers[i-1] > squareNumbers[i]) {
+                    j = squareNumbers[i];
+                    squareNumbers[i] = squareNumbers[i-1];
+                    squareNumbers[i-1] = j;
+                    needIteration = true;
+                }
+            }
+        }       
+            return squareNumbers;       
+    }
+}
